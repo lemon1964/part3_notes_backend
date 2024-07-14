@@ -5,6 +5,7 @@ const cors = require('cors')
 const app = express()
 
 app.use(cors())
+app.use(express.static('dist'));
 
 let notes = [
   {
@@ -22,11 +23,11 @@ let notes = [
     "content": "GET and POST are the most important methods of HTTP protocol",
     "important": false
   },
-  // {
-  //   "id": "4",
-  //   "content": "Array.prototype.indexOf()",
-  //   "important": true
-  // },
+  {
+    "id": "4",
+    "content": "Array.prototype.indexOf()",
+    "important": true
+  },
   // {
   //   "id": "5",
   //   "content": "Array.prototype.find()",
