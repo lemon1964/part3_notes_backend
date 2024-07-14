@@ -1,11 +1,28 @@
 const express = require('express')
-const morgan = require('morgan')
-const cors = require('cors')
-
 const app = express()
-
-app.use(cors())
 app.use(express.static('dist'));
+
+// const requestLogger = (request, response, next) => {
+//   console.log('Method:', request.method)
+//   console.log('Path:  ', request.path)
+//   console.log('Body:  ', request.body)
+//   console.log('---')
+//   next()
+// }
+
+const cors = require('cors')
+app.use(cors())
+
+app.use(express.json())
+// app.use(requestLogger)
+
+const morgan = require('morgan')
+morgan.token('body', function (req, res) { 
+  return JSON.stringify(req.body)
+  })
+
+morgan.format('combined', ':method :url :status :res[content-length] - :response-time ms :body')
+app.use(morgan('combined'))
 
 let notes = [
   {
@@ -48,15 +65,6 @@ let notes = [
 const unknownEndpoint = (request, response) => {
     response.status(404).send({ error: 'unknown endpoint' })
   }
-
-app.use(express.json())
-
-morgan.token('body', function (req, res) { 
-    return JSON.stringify(req.body)
-    })
-
-morgan.format('combined', ':method :url :status :res[content-length] - :response-time ms :body')
-app.use(morgan('combined'))
 
 app.get('/', (request, response) => {
   response.send('<h1>Hello World!</h1>')
