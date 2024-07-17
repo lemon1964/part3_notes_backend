@@ -1,0 +1,17 @@
+POST http://localhost:3001/api/notes
+Content-Type: application/json
+
+{ 
+  "content": "Checking frontend and backend integration", 
+  "important": true
+}
+
+###
+
+PUT http://localhost:3001/api/notes/66970c8d889cc8fbbc6101de
+Content-Type: application/json
+
+{ 
+  "content": "PUT Checking frontend and backend integration", 
+    "important": false
+}

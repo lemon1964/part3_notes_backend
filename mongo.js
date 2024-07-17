@@ -1,3 +1,4 @@
+require('dotenv').config();
 const mongoose = require('mongoose');
 
 if (process.argv.length < 3) {
@@ -7,7 +8,7 @@ if (process.argv.length < 3) {
 
 const password = process.argv[2];
 
-const url = `mongodb+srv://sv444444:${password}@fullstack.gbitkdt.mongodb.net/noteApp?retryWrites=true&w=majority&appName=fullstack`;
+const url = process.env.MONGODB_URL;
 
 mongoose.set('strictQuery', false);
 

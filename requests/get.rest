@@ -1,0 +1,15 @@
+GET http://localhost:3001/api/notes/
+
+###
+GET http://localhost:3001/api/notes/66969996ba3dbc15e598dcb5
+
+###
+
+GET http://localhost:3001/info/
+
+###
+
+GET http://localhost:3001/
+
+###
+
