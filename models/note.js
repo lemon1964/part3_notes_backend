@@ -1,17 +1,16 @@
-require('dotenv').config();
+require('dotenv').config()
 const mongoose = require('mongoose')
 
-const url = process.env.MONGODB_URL;
+const url = process.env.MONGODB_URL
 
 mongoose.set('strictQuery', false)
 
 mongoose.connect(url)
-
-  .then(result => {
-    console.log('connected to MongoDB')
+  .then(() => {
+    console.log('Connected to MongoDB')
   })
-  .catch(error => {
-    console.log('error connecting to MongoDB:', error.message)
+  .catch((error) => {
+    console.log('Error connecting to MongoDB:', error.message)
   })
 
 const noteSchema = new mongoose.Schema({
@@ -20,7 +19,7 @@ const noteSchema = new mongoose.Schema({
     minLength: 5,
     required: true
   },
-    important: Boolean,
+  important: Boolean,
 })
 
 noteSchema.set('toJSON', {
